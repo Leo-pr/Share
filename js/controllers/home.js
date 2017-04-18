@@ -70,9 +70,29 @@ app.controller('HomeCtrl', function(Auth, $ionicLoading, $ionicModal, $scope, Li
 	};
 	
 	home.up = function(index, like_uid) {
-		Like.addDeux(currentUid, like_uid);
+		Like.addLike(currentUid, like_uid);
+		Match.checkMatch(currentUid, like_uid);
+		Like.addQuatre(currentUid, like_uid);
 		home.cardRemoved(index);
 		console.log('Vers le haut');
+	};
+
+	home.down = function(index, like_uid) {
+		Like.addUn(currentUid, like_uid);
+		home.cardRemoved(index);
+		console.log('Vers le bas');
+	};
+
+	home.right = function(index, like_uid) {
+		Like.addTrois(currentUid, like_uid);
+		home.cardRemoved(index);
+		console.log('Vers la droite');
+	};
+
+	home.left = function(index, like_uid) {
+		Like.addDeux(currentUid, like_uid);
+		home.cardRemoved(index);
+		console.log('Vers la gauche');
 	};
 
 	home.like = function(index, like_uid) {
