@@ -1,0 +1,25 @@
+<ion-view view-title="Profil">
+    <ion-content>
+
+        <div ng-if="prof.currentUser">
+            <!--<div class="card">-->
+                <div class="item item-avatar">
+                    <img ng-src="{{prof.currentUser.avatar}}">
+                    <h2>{{prof.currentUser.name}}, {{prof.currentUser.age}}</h2>
+                    <p>{{prof.currentUser.note}}</p>
+                    <p>{{prof.currentUser.location}}</p>
+                </div>
+                <div class="item item-divider">
+                    <h2>A propos</h2>
+                    <ion-item class="item-text-wrap">{{prof.currentUser.bio}}</ion-item>
+                    <button class="button button-black" ng-click="prof.logout()">Edit</button>
+
+            </div>
+                 <span ng-repeat="image in prof.currentUser.images | limitTo:4">
+                    <img ng-src="{{image.source}}" width="10%" height="10%" ng-click="prof.removePic($index)">
+                </span>
+
+        </div>
+
+    </ion-content>
+</ion-view>
